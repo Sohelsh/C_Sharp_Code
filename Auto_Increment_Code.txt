@@ -1,0 +1,45 @@
+        int Auto_Incr()
+        {
+            int Cnt = 0;                                        //Auto Increment Function
+
+            Con_Open();
+
+            SqlCommand Cmd = new SqlCommand();
+
+            Cmd.Connection = Con;
+            Cmd.CommandText = "Select Count (*) from YC_Student_Details";
+
+            Cnt = Convert.ToInt32(Cmd.ExecuteScalar());
+
+            if (Cnt > 0)
+            {
+                Cmd.Dispose();
+                Cmd.Connection = Con;
+
+                Cmd.CommandText = "Select Max(Roll_No) from YC_Student_Details";
+                Cnt = Convert.ToInt32(Cmd.ExecuteScalar()) + 1;
+            }
+            else
+            {
+                Cnt = 201;
+            }
+
+            Con_Close();
+            return Cnt;
+        }
+=============================================================================================
+        void Clear_Controls()
+        {
+            tb_Roll_No.Text = Convert.ToString(Auto_Incr());  //How To Use Auto_Incr Function!
+            tb_Name.Clear();
+            dtp_DOB.Text = "31-12-2000";
+            cmd_Course.SelectedIndex = -1;
+            tb_Mob_No.Clear();
+        }
+=============================================================================================
+        
+        private void frm_Add_Student_Details_Load(object sender, EventArgs e)
+        {
+            Clear_Controls();
+            tb_Roll_No.Focus();                            //Like
+        }
