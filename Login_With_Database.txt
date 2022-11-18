@@ -1,0 +1,34 @@
+            //Login With database
+
+            int Cnt = 0;
+
+            Con_Open();
+
+            SqlCommand Cmd = new SqlCommand();
+            Cmd.Connection = Con;
+
+            Cmd.CommandText = "Select Count (*) From Login_Details where Username = @Uname And Password = @Pwd";
+            Cmd.Parameters.Add("Uname",SqlDbType.NVarChar).Value = tb_Username.Text;
+            Cmd.Parameters.Add("Pwd", SqlDbType.NVarChar).Value = tb_Password.Text;
+
+            Cnt = Convert.ToInt32(Cmd.ExecuteScalar());
+
+            if(Cnt > 0)
+            {
+                MessageBox.Show("Login Succefully","Welcome",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+                frm_Add_Student Obj = new frm_Add_Student();
+                Obj.Show();
+                this.Hide();
+            }
+            else
+            {
+                lbl_Error.Text = "Invaild Username Or Password";
+                lbl_Error.Show();
+                lbl_Error.ForeColor = Color.Red;
+            }
+
+            tb_Username.Clear();
+            tb_Password.Clear();
+
+            Con_Close();
+        }
