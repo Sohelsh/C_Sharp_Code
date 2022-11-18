@@ -1,0 +1,17 @@
+            //Handel Only Numric 
+
+
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+            {
+                MessageBox.Show("please enter digits only");
+                e.Handled = true;
+            }
+
+
+            //Handel Only Letter  
+
+
+             if (!(Char.IsLetter(e.KeyChar) || (e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Space)))
+            {
+                e.Handled = true;
+            }  
