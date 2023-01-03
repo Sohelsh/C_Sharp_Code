@@ -1,0 +1,19 @@
+       using System.Data.SqlClient;// [Headrfile]
+
+       SqlConnection Con = new SqlConnection(@"Link_To_Database");
+
+       void Con_Open()
+        {
+            if (Con.State != ConnectionState.Open)
+            {
+                Con.Open();
+            }
+        }
+
+        void Con_Close()
+        {
+            if (Con.State != ConnectionState.Closed)
+            {
+                Con.Close();
+            }
+        }
