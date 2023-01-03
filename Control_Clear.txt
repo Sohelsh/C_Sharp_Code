@@ -1,0 +1,8 @@
+       void Clear_Controls()
+        {
+            tb_Roll_No.Text = Convert.ToString(Auto_Incr());
+            tb_Name.Clear();
+            tb_Mobile_No.Clear();
+            dtp_DOB.Text = "31-12-2003";
+            cmb_Course.SelectedIndex = -1;
+        }    
