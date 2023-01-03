@@ -1,0 +1,21 @@
+       void Bind_ComboBox()
+        {
+            Con_Open();
+
+            SqlCommand Cmd = new SqlCommand();
+
+            Cmd.Connection = Con;
+            Cmd.CommandText = "Select Distinct(Course_Name) From Course_Details";
+
+            SqlDataReader Dr = Cmd.ExecuteReader();
+
+            while(Dr.Read())
+            {
+                cmb_Course.Items.Add(Dr.GetString(Dr.GetOrdinal("Course_Name")));
+            }
+
+            Con_Close();
+        }
+
+
+          /// It Is Function You Add Form_Load Event
