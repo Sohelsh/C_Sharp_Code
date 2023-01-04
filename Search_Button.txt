@@ -1,0 +1,25 @@
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            Con_Open();
+
+            SqlCommand Cmd = new SqlCommand("Select * From Student_Details Where Roll_No = @RNo",Con);
+
+            Cmd.Parameters.Add("RNo", SqlDbType.Int).Value = tb_Roll_No.Text;
+
+            SqlDataReader Dr = Cmd.ExecuteReader();
+
+            if (Dr.Read())
+            {
+                tb_Name.Text = Dr.GetString(Dr.GetOrdinal("Name"));
+                tb_Mobile_No.Text = (Dr["Mobile_No"].ToString());
+                cmb_Course.Text = Dr.GetString(Dr.GetOrdinal("Course"));
+                dtp_DOB.Text = (Dr["DOB"].ToString());
+            }
+            else
+            {
+                MessageBox.Show("No Record Found","Invalid Roll No");
+                tb_Roll_No.Clear();
+            }
+
+            Con_Close();
+        }
