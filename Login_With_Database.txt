@@ -1,6 +1,6 @@
             //Login With database
 
-            int Cnt = 0;
+        {    int Cnt = 0;
 
             Con_Open();
 
@@ -16,6 +16,9 @@
             if(Cnt > 0)
             {
                 MessageBox.Show("Login Succefully","Welcome",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+                 
+                Shares_Class.Username = tb_Username.Text; //Create Class Of Share Class And Assign User In Share Class.
+
                 frm_Add_Student Obj = new frm_Add_Student();
                 Obj.Show();
                 this.Hide();
