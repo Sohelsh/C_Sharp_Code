@@ -1,0 +1,22 @@
+     class Shares_Class
+    {
+       public static string Username = "";    // Crate Share Class
+    }
+
+
+     private void frm_Add_Student_Load(object sender, EventArgs e)
+     {
+         lbl_Username.Text = Shares_Class.Username;    // Use Of Load Event
+     }
+
+    
+     ****Step****
+
+     1.Frist Create Class
+     2.After Log_In Page Of Sumbit click Assign The User 
+
+       /*
+          Shares_Class.Username = tb_Username.Text; //Like That
+
+       */
+     3. And Use Of Every Page Lond Events.
