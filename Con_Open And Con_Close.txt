@@ -4,7 +4,7 @@
 
        void Con_Open()
         {
-            if (Con.State != ConnectionState.Open)
+            if (Con.State != ConnectionState.Open)          //User Function
             {
                 Con.Open();
             }
